@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>XHR</title>
+</head>
+<body>
+  <script>
+    //创建XHR对象
+    function createXHR() {
+      //判断是否有XMLHttpRequest对象
+      if (typeof XMLHttpRequest != 'undefined') {
+        //创建XMLHttpRequest对象
+        var xmlHttpRequest = new XMLHttpRequest();
+        //针对某些特定版本的mozillar浏览器的BUG进行修正     
+        if (xmlHttpRequest.overrideMimeType) {     
+           xmlHttpRequest.overrideMimeType("text/xml");     
+        }    
+        return  xmlHttpRequest;
+
+        //判断ActiveXObject 兼容ie
+      } else if (typeof ActiveXObject != 'undefined') {
+        //根据对于版本创建 XMLHttp对象
+        if (typeof arguments.callee.activeXString != 'string') {
+          var versions = ['MSXML2.XMLHttp.6.0', 'MSXML2.XMLHttp.3.0','MSXML2.XMLHttp'],
+              i, len;
+          for (i = 0, len = versions.length; i < len; i++) {
+            try {
+              new ActiveXObject(versions[i]);
+              arguments.callee.activeXString = versions[i];
+              break;
+            } catch (ex) {
+              //跳过
+            }
+          }
+        }
+        //返回ie的XHR对象
+        return new ActiveXObject(arguments.callee.activeXString);
+      } else {
+        throw new Error("NO XHR object available.");
+      }
+    }
+    /******
+     * AJAXGET
+     * @param url 请求链接
+     * @parem suc 成功调用函数 参数是解析好的json对象
+     * @param err 自定义请求失败
+     **/
+    function ajaxGet(url, suc, err){
+      //创建一个XHR对象
+      var xhr = createXHR();
+      //创建一个xhr请求
+      xhr.open('GET', url, true);
+      //发送请求
+      xhr.send();
+      //成功返回处理
+      xhr.onreadystatechange = function (){
+        if (xhr.readyState == 4 && xhr.status == 200) {
+          //请求成功处理
+          suc(xhr.responseText);
+        } else if (xhr.readyState == 4 && xhr.status != 200){
+          //失败处理
+          err();
+        }
+      }
+    }
+
+    /******
+     * AJAXPOST
+     * @param url 请求链接
+     * @parem val post参数 object
+     * @parem suc 成功调用函数 参数是解析好的json对象
+     * @param err 自定义请求失败
+     **/
+    function ajaxPost(url, val, suc, err) {
+      //创建一个XHR对象
+      var xhr = createXHR();
+      //创建一个xhr请求
+      xhr.open('POST', url, true);
+      //定义传输的文件HTTP头信息 post形式
+      xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); 
+      //发送请求
+      xhr.send(postStr(val));
+      //成功返回处理
+      xhr.onreadystatechange = function (){
+        if (xhr.readyState == 4 && xhr.status == 200) {
+          suc(xhr.responseText);
+        } else if (xhr.readyState == 4 && xhr.status != 200){
+          //失败处理
+          err();
+        }
+      }
+    }
+
+    //成功处理
+    var suc = function (){
+      //code
+    }
+
+    //失败处理
+    var err = function(){
+      //code
+    }
+
+    //json解析函数
+    function deJson(data){
+      return new Function('return ' + data)();
+    }
+
+    //post 所需参数个数处理
+    function postStr(obj){
+      var str = "";
+      for(var prop in obj){
+          str += prop + "=" + obj[prop] + "&"
+      }
+      return str;
+    }
+    //test GET
+    //ajaxGet('http://127.0.0.1/11.php',suc,err);
+    //ajaxPost('http://127.0.0.1/1.php',{'demo':'这是一个测试'},suc,err)
+  </script>
+</body>
+</html>

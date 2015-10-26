@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <title>Document</title>
+</head>
+<body>
+  <script type="text/javascript">
+var u = navigator.userAgent, app = navigator.appVersion;
+var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1; //android终端或者uc浏览器
+//var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+  var isiOS6 = u.indexOf('iPhone OS 6');
+  var isiOS7 = u.indexOf('iPhone OS 7');
+  var isiOS8 = u.indexOf('iPhone OS 8');
+  var isiOS9 = u.indexOf('iPhone OS 9');
+document.write('是否是Android：'+isAndroid);
+document.write('<br/>');
+document.write('是否是iOS6：'+isiOS6);
+document.write('<br/>');
+document.write('是否是iOS7：'+isiOS7);
+document.write('<br/>');
+document.write('是否是iOS8：'+isiOS8);
+document.write('<br/>');
+document.write('是否是iOS9：'+isiOS9);
+document.write('<br/>');
+document.write(window.screen.height);
+document.write('<br/>');
+document.write(window.screen.width);
+</script>
+</body>
+</html>

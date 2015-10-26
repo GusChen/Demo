@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <ul id="demo">
+    <li>1</li>
+    <li>2</li>
+    <li class="list">3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>6</li>
+  </ul>
+  <script>
+    //兼容新老浏览器的class
+    function getElementsByClassName(node, classname) {
+      if (node.getElementsByClassName) {
+        //使用现有方法
+        return node.getElementsByClassName(classname);
+      } else {
+        var results = new Array();
+        var elems = node.getElementsByTagName('*');
+        for (var i = 0; i < elems.length; i++) {
+          if (elems[i].className.indexOf(classname) != -1) {
+            results[results.length] = elems[i];
+          }
+        return results;
+        }
+      }
+    }
+    var demo = document.getElementById('demo');
+    var list = getElementsByClassName(demo,'list');
+    alert(list);
+  </script>
+</body>
+</html>

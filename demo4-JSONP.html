@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JSONP</title>
+</head>
+<body>
+  <script>
+  function ajaxJsonp(url,call){
+    var script = document.createElement("script");
+    script.src = url + '?callback='+call;
+    //添加到head
+    document.body.insertBefore(script, document.body.firstChild);
+  }
+  function handleResponse(response){
+    //code  回调函数
+  }
+  ajaxJsonp('http://127.0.0.1/1.php','handleResponse');
+  //后端返回数据格式 callback(json);
+  //demo   handleResponse({demo:'这个是一个demo'})
+  </script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="zh-hans">
+<head>
+	<meta charset="UTF-8">
+	<title>修改默认上传样式</title>
+	<style>
+	.upfile{
+		height: 24px;
+		/*display: inline-block;*/
+		float: left;
+		border:1px solid #c3c3c3;
+		padding: 2px;
+	}
+	.fileUpload {
+		position: relative;
+		overflow: hidden;
+		margin: 0px 5px;
+		background: #308AFB;
+		/*display: inline-block;*/
+		/*这个div设置inline-block时 前面的input出现了问题 使用浮动的方式解决*/
+		height: 30px;
+		border-radius: 5px;
+		width: 80px;
+		text-align: center;
+		float: left;
+	}
+	.fileUpload span{
+    color:#fff;
+    line-height: 30px;
+	}
+	.fileUpload input.upload {	
+		position: absolute;
+		top: 0;
+		right: 0;
+		margin: 0;
+		padding: 0;
+		font-size: 20px;
+		cursor: pointer;
+		opacity: 0;
+		filter: alpha(opacity=0);
+	}
+	</style>
+	<script>
+		window.onload = function() {
+			document.getElementById("uploadBtn").onchange = function () {
+    	 document.getElementById("uploadFile").value = this.value;
+     };
+    };
+	</script>
+</head>
+<body>
+    <input id="uploadFile" placeholder="请选择文件" disabled="disabled" class="upfile"/>
+	  <div class="fileUpload">
+      <span>Upload</span>
+    <input type="file" class="upload" id="uploadBtn"/>
+</div>
+</body>
+</html>

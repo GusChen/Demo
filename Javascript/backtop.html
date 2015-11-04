@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>回到顶部</title>
+	<style>
+	a{color:#0a8cd2;text-decoration:none;}
+    a:hover{text-decoration:underline;}
+	.backtop{
+		width: 100px;
+		height: 100px;
+		position: fixed;
+		bottom: 30px;
+		right: 30px;
+		background: #000;
+		opacity: 0.7;
+		filter:Alpha(opacity=70);
+		display: block;
+	}
+	.gotop{ 
+		width:18px;
+		line-height:1.2;
+		padding:7px 0px 7px 2px;
+		background-color:#000;
+		color:#fff;
+		font-size:12px;
+		text-align:center;
+		position:fixed;
+		right:0px;
+		bottom:100px;
+		cursor:pointer;
+		opacity:0.6;
+		filter:Alpha(opacity=60);
+		border-radius:5px 0 0 5px; 
+		display:none;
+	}
+    .gotop:hover{ 
+    	text-decoration:none;
+    	opacity:0.7;
+    	filter:Alpha(opacity=70);
+    }
+    .gototop{
+    	width: 40px;
+    	height: 40px;
+    	position: fixed;
+    	bottom: 40px;
+    	right: 40px;
+    	background-color: rgba(0,0,0,0.6);
+    	transition: background-color 1s;
+    	display: none;
+    }
+    .gototop:after{
+    	content: "";
+    	transform:rotate(45deg);
+		-ms-transform:rotate(45deg); 	/* IE 9 */
+		-moz-transform:rotate(45deg); 	/* Firefox */
+		-webkit-transform:rotate(45deg); /* Safari 和 Chrome */
+		-o-transform:rotate(45deg); 
+		border: 2px solid #fff;
+		width: 18px;
+	    height: 18px;
+	    position: absolute;
+	    top: 16px;
+	    left: 9px;
+	    border-right-color: transparent;
+		border-bottom-color: transparent;
+    }
+    .gototop:hover{
+		background-color: rgba(0,0,0,0.8);
+    }
+    .demo{
+    	height: 2000px;
+    }
+	</style>
+</head>
+<body>
+  <div class="demo"></div>
+	<a href="javascript:void(0);" class="gotop" id="top1">回到顶部</a>
+	<a href="javascript:void(0);" class="gototop" id="top2"></a>
+	<script>
+	(function (){
+		var btn1 = document.getElementById('top1');
+		var btn2 = document.getElementById('top2');
+		function getScroll(){
+			//兼容火狐 document.documentElement.scrollTop  chrome document.body.scrollTop
+			return document.documentElement.scrollTop || document.body.scrollTop;
+		}
+		//高度判断
+		window.onscroll = function(){
+            btn1.style.display = btn2.style.display = getScroll() > 0 ? 'block' : 'none';
+    }
+    //返回顶部
+    btn1.onclick = btn2.onclick = function (){
+    	timer = setInterval(function(){
+        var scrollTop = getScroll();
+        var iSpeed = Math.floor(- scrollTop / 8);
+        if(scrollTop == 0){
+            clearInterval(timer);
+        }
+        document.documentElement.scrollTop = document.body.scrollTop = scrollTop + iSpeed;
+      }, 30);
+    }
+	})();
+	</script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Scrollup</title>
+  <style>
+  .demo{
+    margin: auto;
+    border:1px solid #000;
+    overflow: hidden;
+    width: 300px;
+    height: 100px;
+  }
+  .scrollList{
+    width: 300px;
+    margin: 0px;
+    padding: 0;
+  }
+  .scrollList li{
+    height: 30px;
+    margin: 0 10px 10px 10px;
+    width: 278px;
+    border:1px solid #000;
+    line-height: 30px;
+    text-align: center;
+  }
+  </style>
+</head>
+<body>
+  <div class="demo">
+    <ul class="scrollList">
+      <li>1</li>
+      <li>2</li>
+      <li style="height:40px;">3</li>
+      <li>4</li>
+      <li style="height:60px;">5</li>
+      <li style="height:40px;"> 6</li>
+      <li>7</li>
+      <li>8</li>
+      <li>9</li>
+      <li>10</li>
+    </ul>
+  </div>
+  <script>
+  (function (){
+    var scrollLists = document.getElementsByClassName('scrollList'),
+        timer;
+    scrollLists[0].onmouseenter = function (){
+      clearInterval(timer);
+    }
+    scrollLists[0].onmouseleave = function (){
+      scrollup();
+    }
+    scrollup = function () {
+      timer = setInterval(
+        function (){
+          //动态取第一个值 能够兼容不同高度的li
+          var upheight = getScrollLiTop();
+          var iSpeed = 3;
+          scrollLists[0].style.marginTop = getScrollTop() - iSpeed + 'px' ;
+          if (Math.abs(getScrollTop()) >= getScrollLiTop()) {
+            States()
+          }
+        },100);
+    }
+    scrollup();
+    //获取li的高度
+    function getScrollLiTop(){
+      return scrollLists[0].children[0].offsetHeight + 10;
+    }
+    //获取ul margin的高度
+    function getScrollTop(){
+      //return scrollLists[0].style.marginTop;
+      if (!scrollLists[0].style.marginTop){
+        scrollLists[0].style.marginTop = '0px';
+      }
+      return parseInt(scrollLists[0].style.marginTop);
+    }
+    //调节节点
+    function States(){
+      var firstNodes = scrollLists[0].children[0]; //第一个字节点
+      scrollLists[0].style.marginTop = getScrollTop() +  getScrollLiTop() + 'px'; //修改为初始状态
+      scrollLists[0].removeChild(firstNodes); //删除子节点
+      scrollLists[0].appendChild(firstNodes); //末尾添加子节点
+    }
+  })();
+  </script>
+</body>
+</html>

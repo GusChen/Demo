@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+  .hezi{
+    width: 100px;
+    height: 60px;
+    background-color: #f1f1f1;
+    position: relative;
+  }
+  .xiaohezi{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100px;
+    height: 60px;
+  }
+  .hezi:after,.hezi:before,.xiaohezi:after,.xiaohezi:before{
+    content: '';
+    position: absolute;
+    border:1px solid #000;
+    width: 10px;
+    height: 10px;
+  }
+  .hezi:after{
+    top: 0;
+    left: 0;
+    border-right-color: transparent;
+    border-bottom-color:transparent; 
+  }
+  .hezi:before{
+    top: 0;
+    right: 0;
+    border-left-color: transparent;
+    border-bottom-color:transparent; 
+  }
+
+  .xiaohezi:after{
+    bottom: 0;
+    left: 0;
+    border-right-color: transparent;
+    border-top-color:transparent; 
+  }
+  .xiaohezi:before{
+    bottom: 0;
+    right: 0;
+    border-top-color:transparent;
+    border-left-color: transparent; 
+  }
+  </style>
+</head>
+<body>
+  <div class="hezi">
+    <div class="xiaohezi"></div>
+  </div>
+</body>
+</html>

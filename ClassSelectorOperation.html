@@ -5,25 +5,40 @@
   <title>Document</title>
 </head>
 <body>
-  <div class="aa bb"></div>
   <script>
-    var demo = document.getElementsByClassName('aa');
-    //是否存在class
+    /********
+     *是否存在class
+     *@param obj element
+     *@param cls string
+     *@return boolean
+     */
     function hasClass(obj, cls) {  
-    return obj.className.match(new RegExp('(\\s|^)' + cls + '(\\s|$)'));  
+      return Boolean(obj.className.match(new RegExp('(\\s|^)' + cls + '(\\s|$)')));  
     }  
-    //添加class
+    /********
+     *添加class
+     *@param obj element
+     *@param cls string
+     */
     function addClass(obj, cls) {  
         if (!this.hasClass(obj, cls)) obj.className += " " + cls;  
     }  
-    //删除class
+    /********
+     *删除class
+     *@param obj element
+     *@param cls string
+     */
     function removeClass(obj, cls) {  
         if (hasClass(obj, cls)) {  
             var reg = new RegExp('(\\s|^)' + cls + '(\\s|$)');  
             obj.className = obj.className.replace(reg, ' ');  
         }  
     }  
-    //toggle class
+    /********
+     *toggleclass
+     *@param obj element
+     *@param cls string
+     */
     function toggleClass(obj,cls){  
         if(hasClass(obj,cls)){  
             removeClass(obj, cls);  

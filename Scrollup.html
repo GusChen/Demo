@@ -52,6 +52,7 @@
       scrollup();
     }
     scrollup = function () {
+      if (timer) return;
       timer = setInterval(
         function (){
           //动态取第一个值 能够兼容不同高度的li
@@ -59,7 +60,9 @@
           var iSpeed = 3;
           scrollLists[0].style.marginTop = getScrollTop() - iSpeed + 'px' ;
           if (Math.abs(getScrollTop()) >= getScrollLiTop()) {
-            States()
+            replaceNode();
+            clearInterval(timer);
+            timer = null;
           }
         },100);
     }
@@ -70,14 +73,13 @@
     }
     //获取ul margin的高度
     function getScrollTop(){
-      //return scrollLists[0].style.marginTop;
       if (!scrollLists[0].style.marginTop){
         scrollLists[0].style.marginTop = '0px';
       }
       return parseInt(scrollLists[0].style.marginTop);
     }
     //调节节点
-    function States(){
+    function replaceNode(){
       var firstNodes = scrollLists[0].children[0]; //第一个字节点
       scrollLists[0].style.marginTop = getScrollTop() +  getScrollLiTop() + 'px'; //修改为初始状态
       scrollLists[0].removeChild(firstNodes); //删除子节点

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    /********
+     *是否存在class
+     *@param obj element
+     *@param cls string
+     *@return boolean
+     */
+    function hasClass(obj, cls) {  
+      return Boolean(obj.className.match(new RegExp('(\\s|^)' + cls + '(\\s|$)')));  
+    }  
+    /********
+     *添加class
+     *@param obj element
+     *@param cls string
+     */
+    function addClass(obj, cls) {  
+        if (!this.hasClass(obj, cls)) obj.className += " " + cls;  
+    }  
+    /********
+     *删除class
+     *@param obj element
+     *@param cls string
+     */
+    function removeClass(obj, cls) {  
+        if (hasClass(obj, cls)) {  
+            var reg = new RegExp('(\\s|^)' + cls + '(\\s|$)');  
+            obj.className = obj.className.replace(reg, ' ');  
+        }  
+    }  
+    /********
+     *toggleclass
+     *@param obj element
+     *@param cls string
+     */
+    function toggleClass(obj,cls){  
+        if(hasClass(obj,cls)){  
+            removeClass(obj, cls);  
+        }else{  
+            addClass(obj, cls);  
+        }  
+    } 
+  </script>
+</body>
+</html>

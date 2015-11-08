@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+<style>
+.demo{
+  margin:20px;
+}
+.slider{
+  width: 100px;
+	height: 10px;
+	background-color: #A9A8A8;
+	position: relative;
+}
+.sliderbutton{
+	position: absolute;
+	top: -5px;
+	left: 45px;
+	width: 10px;
+	height: 20px;
+	background-color: #000;
+	cursor: pointer;
+}
+.demos{
+  width: 800px;
+  height: 500px;
+  border: 1px solid;
+  position: fixed;
+  left: 200px;
+  top: 40px;
+}
+.tuxing{
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background: #000;
+  left: 350px;
+  top: 200px;
+}
+</style>
+</head>
+<body>
+rotate
+<div class="demo">
+	<div class="slider">
+		<div id="sliderbutton1" class="sliderbutton"></div>
+	</div>
+</div>
+translateX
+<div class="demo">
+	<div class="slider">
+		<div id="sliderbutton2" class="sliderbutton"></div>
+	</div>
+</div>
+translateY
+<div class="demo">
+	<div class="slider">
+		<div id="sliderbutton3" class="sliderbutton"></div>
+	</div>
+</div>
+scaleX
+<div class="demo">
+	<div class="slider">
+		<div id="sliderbutton4" class="sliderbutton"></div>
+	</div>
+</div>
+scaleY
+<div class="demo">
+	<div class="slider">
+		<div id="sliderbutton5" class="sliderbutton"></div>
+	</div>
+</div>
+skewX
+<div class="demo">
+	<div class="slider">
+		<div id="sliderbutton6" class="sliderbutton"></div>
+	</div>
+</div>
+skewY
+<div class="demo">
+	<div class="slider">
+		<div id="sliderbutton7" class="sliderbutton"></div>
+	</div>
+	
+</div>
+
+<!--skewZ
+<div class="demo">
+	<div class="slider">
+		<div id="sliderbutton8" class="sliderbutton"></div>
+	</div>
+</div>-->
+<div class="demos">
+	<div class="tuxing" id="tx"></div>
+	<div class="code">代码：<span id="code"></span></div>
+</div>
+<script>
+//滑动条方法
+function Slider(obj) {
+	
+	this.name = obj.name;
+	this.sliderLeft = obj.left || (-5);
+	this.sliderRight = obj.right || 95;
+	this.onc = false;
+	//tuxin
+	this.tuxin = obj.tuxin;
+	this.tuxinfunc = obj.tuxinfunc;
+	this.tuxinType = obj.tuxinType;
+	this.tuxindw = obj.tuxindw;
+	//监听
+	function listener(obj, ev, func){
+		//ie 兼容
+		if (document.attachEvent) {
+			ev = 'on' + ev;
+			obj.attachEvent(ev, func);
+		} else {
+			obj.addEventListener(ev, func);
+		}
+	}
+	
+	this.init = function(){
+		var t = this;
+		var theSlider = document.getElementById(t.name);
+		listener(document, "mouseup", function() {
+			t.onc = false;
+		});
+		listener(document, "mousemove", function(e) {
+			if (t.onc) {
+				e = e || window.event;
+				//位置变化
+				var mouseMoveX = t.oldMouseLeft - e.clientX;
+				var moveX = t.oldLeft - mouseMoveX;
+				if (moveX > t.sliderRight) {
+					theSlider.style.left = t.sliderRight + 'px';
+					// tuxin
+					t.tuxinfunc(t.tuxin, t.sliderRight, t.tuxinType, t.tuxindw)
+				} else if (moveX < t.sliderLeft){
+					theSlider.style.left = t.sliderLeft + 'px';
+					// tuxin
+					t.tuxinfunc(t.tuxin, t.sliderLeft, t.tuxinType, t.tuxindw)
+				} else {
+					theSlider.style.left = moveX + 'px';
+					// tuxin
+					t.tuxinfunc(t.tuxin, moveX, t.tuxinType, t.tuxindw)
+				}
+			}
+		});
+		listener(theSlider, "mousedown", function(e){
+			e = e || window.event;
+	    t.onc = true;
+	    t.oldMouseLeft = e.clientX;
+	    t.oldLeft = theSlider.offsetLeft;
+		});
+	}
+	this.init();
+}
+var rotate = new Slider({
+	name : "sliderbutton1",
+	tuxin : "tx",
+	tuxinfunc : transforms,
+	tuxinType : "rotate",
+	tuxindw : "deg"
+});
+var translateX = new Slider({
+	name : "sliderbutton2",
+	tuxin : "tx",
+	tuxinfunc : transforms,
+	tuxinType : "translateX",
+	tuxindw : "px"
+});
+var translateY = new Slider({
+	name : "sliderbutton3",
+	tuxin : "tx",
+	tuxinfunc : transforms,
+	tuxinType : "translateY",
+	tuxindw : "px"
+});
+var scaleX = new Slider({
+	name : "sliderbutton4",
+	tuxin : "tx",
+	tuxinfunc : transforms,
+	tuxinType : "scaleX",
+	tuxindw : ""
+});
+var scaleY = new Slider({
+	name : "sliderbutton5",
+	tuxin : "tx",
+	tuxinfunc : transforms,
+	tuxinType : "scaleY",
+	tuxindw : ""
+});
+var skewX = new Slider({
+	name : "sliderbutton6",
+	tuxin : "tx",
+	tuxinfunc : transforms,
+	tuxinType : "skewX",
+	tuxindw : "deg"
+});
+var skewY = new Slider({
+	name : "sliderbutton7",
+	tuxin : "tx",
+	tuxinfunc : transforms,
+	tuxinType : "skewY",
+	tuxindw : "deg"
+});
+/*var skewZ = new Slider({
+	name : "sliderbutton8",
+	tuxin : "tx",
+	tuxinfunc : transforms,
+	tuxinType : "skewZ",
+	tuxindw : "deg"
+});*/
+//
+function transforms(el, x, type, dw) {
+	x = x - 45;
+	var tx,txx = '';
+	el = document.getElementById(el);
+	//避免重复添加
+	if (type == "scaleY" || type == "scaleX") x = x / 10;
+	if (!el.style.webkitTransform == '') {
+		tx = el.style.webkitTransform.split(" ");
+		for(var i in tx) {
+			if (tx[i].indexOf(type) < 0){
+				txx = txx + tx[i] + " ";
+			}
+		}
+	}
+	el.style.webkitTransform = txx +type + "(" + x + dw +")";
+	document.getElementById('code').innerHTML = "transforms:"+el.style.webkitTransform;
+}
+</script>
+</body>
+</html>

@@ -12,21 +12,37 @@
  *@param option 参数 object
  *@return animate对象
  */
-var animate = function (selector, option) {
-  return animate.prototype.init(selector,option);
+var animate = function (selector, option,  speed, func) {
+  return animate.prototype.init(selector,option, speed, func);
 }
 /***
  *init 初始化函数
  *
  */
- animate.prototype.init = function (selector,option){
+ animate.prototype.init = function (selector, option, speed, func){
    this.selector = selector;
+   this.option = option;
+   this.speed = speed;
+   this.func = func;
+   //初始化speed
+   this.Speed();
+ }
+ //Speed
+ animate.prototype.Speed = function () {
+   if (this.speed == "slow") {
+     this.speed = 50;
+   } else (this.speed == "fast") {
+     this.speed = 30;
+   }
+   return this.speed;
+ }
+ //Animate
+ animate.prototype.Animate = function () {
+  
  }
  //将animate的原型方法 传递给init
  animate.prototype.init.prototype = animate.prototype;
- animate.a = function a(){
 
- }
 </script>
 </body>
 </html>

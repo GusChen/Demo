@@ -6,6 +6,7 @@
 </head>
 <body>
 <script>
+;(function (){
 /**
  *animate 基础函数
  *@param selector id选择器 string 
@@ -40,9 +41,15 @@ var animate = function (selector, option,  speed, func) {
  animate.prototype.Animate = function () {
   
  }
+ //倒计时
+ animate.prototype.Interval = function () {
+
+ }
  //将animate的原型方法 传递给init
  animate.prototype.init.prototype = animate.prototype;
-
+ //暴露给全局
+ window.animate = animate;
+})();
 </script>
 </body>
 </html>

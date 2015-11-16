@@ -31,14 +31,19 @@ var animate = function (selector, option,  speed, func) {
  animate.prototype.Speed = function () {
    if (this.speed == "slow") {
      this.speed = 50;
-   } else (this.speed == "fast") {
+   } else if (this.speed == "fast") {
      this.speed = 30;
    }
    return this.speed;
  }
  //Animate
- animate.prototype.Animate = function () {
-  
+animate.prototype.Animate = function () {
+  //if (this.timer) clearInterval(this.timer);
+  //this.startTime = new Date();
+  this.step;
+  this.timer = setInterval(function (){
+    this.obj.setAttribute('style','')
+  }, this.speed); 
  }
  //将animate的原型方法 传递给init
  animate.prototype.init.prototype = animate.prototype;

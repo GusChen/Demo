@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>input</title>
+</head>
+<body>
+  <p>去除空格</p>
+  <input type="text" id="space">
+  <input type="button" id="cleanspace" value="去除空格">
+  <p>限制字符长度</p>
+  <input type="text" id="Length" maxlength="20">
+  <span id="Lengthresult"></span>
+  <p>邮箱验证</p>
+  <input type="text" id="email">
+  <input type="button" id="emailtest" value="测试">
+  <span style="color:red;display:none;" id="emailresult">格式错误</span>
+  <p>限制只能输入数字</p>
+  <input type="text" id="num">
+  <p>限制只能输入中文</p>
+  <input type="text" id="zh">
+  <p>限制中文输入</p>
+  <input type="text" id="nozh">
+  <p>限制特殊字符</p>
+  <input type="text" id="special">
+  <p>限制复制和粘贴</p>
+  <input type="text" id="copypaste">
+<script>
+  //去除空格
+  document.getElementById('cleanspace').onclick = function (){
+    var space = document.getElementById('space');
+    space.value = space.value.replace(/(\s|\u00A0)+|(\s|\u00A0)+/g,'');
+  }
+  
+  //限制字符长度
+  document.getElementById('Length').onkeyup = function (){
+    if ( this.value.length >= 20 ) {
+      testType( 'Lengthresult', false, '字符长度限制为20');
+    }
+  }
+
+  //email 邮箱
+  mailReg = /^(\w)+(\.\w+)*@(\w)+((\.\w+)+)$/;
+  document.getElementById('emailtest').onclick = function (){
+    var email = document.getElementById('email').value;
+    if ( mailReg.test(email) ) {
+      testType( 'emailresult', true, '格式正确');
+    } else {
+      testType( 'emailresult', false, '格式错误');
+    }
+  }
+
+  //只能输入数字
+  document.getElementById('num').onkeyup = function () {
+    this.value = this.value.replace(/[^0-9]/, '');
+  }
+
+  //只能输入中文
+  document.getElementById('zh').onkeyup = function () {
+    this.value = this.value.replace(/[^\u4e00-\u9fa5]/g, '');
+  }
+
+  //不能输入中文
+  document.getElementById('nozh').onkeyup = function () {
+    this.value = this.value.replace(/[\u4e00-\u9fa5]/g, '');
+  }
+
+  //限制特殊字符 "'<>%;)(&+
+  document.getElementById('special').onkeyup = function () {
+    this.value = this.value.replace(/[\"\'<>%;)(&+]/,"");
+  }
+  
+  //现在粘贴和复制
+  var copypaste = document.getElementById('copypaste');
+  copypaste.oncopy = copypaste.onpaste = function (){
+    return false;
+  }
+
+  //格式
+  function testType( id, type, str) {
+    var obj = document.getElementById(id);
+    if ( type === true ) {
+      obj.style.color = '#000';
+      obj.innerHTML = str;
+    } else {
+      obj.style.color = 'red';
+      obj.innerHTML = str;
+    }
+    obj.style.display = 'block';
+  }
+</script>
+</body>
+</html>

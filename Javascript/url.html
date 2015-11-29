@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Url</title>
+</head>
+<body>
+<script>
+/***************url处理函数支持格式 http://www.xx.com?a=1&b=2*****************/
+/***************无考虑参数名和值相同的情况************************************/
+/***
+ * 设置参数函数
+ * @param url string 链接
+ * @param param string 参数名
+ * @param val string 参数值
+ * @return string 处理完成的url
+ */
+function setUrlParam(url, param, val) {
+  var urlArr,newUrl,urlArr1;
+  //是否存在参数
+  if (url.indexOf('?') > 0){
+    urlArr = url.split('?');
+    //是否存在第二个参数
+    if( urlArr[1].indexOf(param) >= 0 ) {
+      urlArr1 = urlArr[1].split('&');
+      newUrl = urlArr[0];
+      if (urlArr1.length == 1) {
+        //url只有一个参数 和需要带的参数是同一个
+        newUrl = newUrl + '?' + param + '=' + val;
+      } else {
+        //url带有多个参数 同时需要带的参数也包含在里面
+        for (var i in urlArr1) {
+          //去除已经包含的参数
+          if (urlArr1[i].indexOf(param) < 0) { 
+            //是否是第一个位置的参数
+            if (newUrl.indexOf('?') >= 0) { 
+              newUrl = newUrl + '&' + urlArr1[i];
+            } else {
+              newUrl = newUrl + '?' + urlArr1[i];
+            }
+          }
+        }
+        newUrl = newUrl + '&' + param + '=' + val;
+      }
+    } else {
+      //url带有一个参数 但是和新参数不是同一个
+      newUrl = url + '&' + param + '=' + val;
+    }
+  } else {
+    //url没有任何参数
+    newUrl = url + '?' + param + '=' + val;
+  }
+  return newUrl;
+}
+/***
+ * 获取参数值的函数
+ * @param url string 链接
+ * @param param string 参数名
+ * @return 如果参数存在返回 sring 不存在 返回bool 的false
+ */
+function getUrlParam(url, param) {
+  //var reg = /[\?|\&]{1}[\w+]/;
+  var reg = new RegExp("([\\?]{1}|[\\&]{1})" + param +"[\\=][\\w]+");
+  var Param = reg.exec(url);
+  if(Param) {   
+    return Param[0].split('=')[1];
+  } else {
+    return false;
+  }
+}
+/***
+ * 删除参数函数
+ * @param url string 链接
+ * @param param string 参数名
+ * @return 如果参数存在返回处理完成的url sring 不存在 返回bool 的false
+ */
+function delUrlParam(url, param) {
+  var newurl;
+  var reg = new RegExp("([\\?]{1}|[\\&]{1})" + param +"[\\=][\\w]+");
+  var ParamSta = reg.exec(url);
+  if (ParamSta) {
+    url = url.split('?');
+    newurl = url[0];
+    url = url[1].split('&');
+    for (var i in url) {
+      if (url[i].indexOf(param) <0){
+        if (newurl.indexOf('?') >= 0) { 
+          newurl = newurl + '&' + url[i];
+        } else {
+          newurl = newurl + '?' + url[i];
+        }
+      }
+    }
+    return newurl;
+  } else {
+    return false;
+  }
+}
+</script>
+</body>
+</html>

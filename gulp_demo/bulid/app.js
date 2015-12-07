@@ -1,1 +1,1 @@
-document.write("123456");var a=document.createElement("div");a.innerHTML="abc",document.body.appendChild(a);
+var a=document.createElement("div");a.innerHTML="abc",document.body.appendChild(a);

@@ -1,9 +1,21 @@
 var fs = require('fs');
 //index 方法
 function index(response) {
+  //读取页面
+  fs.readFile('./view/index.html', 'binary', function (err,file){
+    if (err) {
+      //输出报错
+      response.writeHead(500, {'Content-Type': 'text/plain'});
+      var err = JSON.stringify(err); //错误信息转换成 字符串
+      response.end(err);
+    } else {
+      //打印页面
+      response.writeHead(200, {'Content-Type': "text/html"});
+      response.write(file, "binary");
+      response.end();
+    }
+  });
   console.log("index");
-  response.writeHead(200, {'Content-Type': 'text/plain'});
-  response.end("Hello index");
 }
 //test 方法
 function test(response) {

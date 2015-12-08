@@ -8,5 +8,8 @@ var handle = {};
 handle['/'] = requestHandlers.index;
 handle['/index'] = requestHandlers.index;
 handle['/test'] = requestHandlers.test;
+
+handle['/post'] = requestHandlers.post;
+handle['/get'] = requestHandlers.get;
 //启动服务
 star(route, handle);

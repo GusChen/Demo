@@ -1,7 +1,7 @@
 var fs = require('fs');
 //index 方法
 function index(response) {
-  //读取页面
+  //读取页面 只能读取指定文件
   fs.readFile('./view/index.html', 'binary', function (err,file){
     if (err) {
       //输出报错

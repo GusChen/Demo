@@ -1,12 +1,17 @@
 var http = require('http');
 var url = require('url');
-var util = require('util');
+var querystring = require('querystring');
 
 http.createServer(function(req, res) {
-  res.writeHead(200, {'Content-Type': 'text/plain'});
-  //res.end(util.inspect(url.parse(req.url, true)));
+
   var get = url.parse(req.url);
-  //console.log(get);
-  //res.write();
-  res.end(url.parse(req.url));
+  var getlist = querystring.parse(get.query)
+  res.writeHead(200, {'Content-Type': 'text/html'});
+
+  for (var i in getlist) {
+		res.write(i + "=>" + getlist[i] + "<br>");
+	}
+
+  res.end();
 }).listen(8888);
+console.log('star');

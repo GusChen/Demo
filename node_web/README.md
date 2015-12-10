@@ -11,6 +11,7 @@
 
 - test/ # 测试模块
  - route/ # 资源加载test
- - post_and_get # post和get的demo
+ - post_and_get/ # post和get的demo
+ - replace/ # 模板替换
 
 - app.js # 应用入口

@@ -9,6 +9,14 @@
     return 'http://127.0.0.1:80/win32-ia32-11_binding.node';
     //为了方便我搭建了一个服务方了这个文件
    ```
-  
+
  - 然后在在node-sass文件夹下面运行`npm install`
  - 然后就可以安装gulp-sass了，一波三折 (╯‵□′)╯︵┻━┻
+
+
+ #### scss语法
+ - demo1 变量声明
+ - demo2 嵌套规则
+ - demo3 引入规则
+ - demo4 混合器
+ - demo5 继承

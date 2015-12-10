@@ -1,0 +1,36 @@
+#content h1 {
+  font-size: 14px; }
+
+#content div {
+  background: #ffffff; }
+  #content div p {
+    margin: 0; }
+
+#content .test, #content .test2 {
+  color: #000; }
+
+body a {
+  color: #000; }
+  body a:hover {
+    color: red; }
+
+div:after {
+  background: #000; }
+
+article {
+  color: #000; }
+  body.ie article {
+    font-size: 11px; }
+
+div > p {
+  color: #000; }
+
+div + p {
+  color: #000; }
+
+div ~ p {
+  color: #000; }
+
+nav {
+  border-width: 1px;
+  border-color: #000; }

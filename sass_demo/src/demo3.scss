@@ -1,0 +1,17 @@
+//引入
+@import 'demo'; //以下划线命名开头会导入文件中的变量，不会对文件进行编译
+@import 'dist/demo2.css';
+
+//默认变量
+$width:100px;
+$width:200px; //覆盖了第一个
+
+//默认
+$height:20px !default; //强制默认使用
+$height:10px;
+
+p{
+  width: $width;
+  height: $height;
+  color:$aa;
+}

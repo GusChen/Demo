@@ -1,0 +1,45 @@
+//嵌套规则
+#content{
+  h1{ font-size: 14px;}
+  div {background: #ffffff;
+    p {margin: 0;}
+  }
+}
+
+//群组嵌套
+#content{
+  .test,.test2{color:#000;}
+}
+
+//选择性标签
+body a{
+  color:#000;
+  &:hover{color:red;}
+}
+div{
+  &:after{background: #000;}
+}
+
+article{
+  color:#000;
+  body.ie & {font-size: 11px;}
+}
+
+//组合选择器
+div>p{
+  color:#000;
+}
+div+p{
+  color:#000;
+}
+div~p{
+  color:#000;
+}
+
+//嵌套属性
+nav {
+  border:{
+    width:1px;
+    color:#000;
+  }
+}

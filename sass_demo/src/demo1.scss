@@ -1,0 +1,12 @@
+// 变量声明使用$符号
+// 可使用下划线和横线 两者通用
+$nav-color: #F90;
+$width: 100px;
+$height-color:#fff;
+nav {
+  width: $width;
+  color: $nav_color;
+}
+body {
+  background: $height-color;
+}

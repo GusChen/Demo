@@ -1,0 +1,5 @@
+@import url(dist/demo2.css);
+p {
+  width: 200px;
+  height: 10px;
+  color: #000; }

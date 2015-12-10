@@ -1,5 +1,2 @@
-gulp_demo/node_modules
-gulp_demo/npm-debug.log
-
-es6_demo/node_modules
-es6_demo/npm-debug.log
+*/node_modules
+*/npm-debug.log

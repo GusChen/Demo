@@ -4,4 +4,5 @@
 [https://guschen.github.io/Demo](https://guschen.github.io/Demo)
 
 * gulp_demo gulp配置的自动刷新
-* node_web 一个node的demo 包含简单的路由
+* node_web node的demo
+* es6_demo javascript ES6

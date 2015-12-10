@@ -29,8 +29,12 @@ http.createServer(function(request, response) {
     });
   } else {
     //404
-    response.writeHead(404,{"Content-Type": "text/plain"});
-    response.end("404");
+    // response.writeHead(404,{"Content-Type": "text/plain"});
+    // response.end("404");
+
+    //重定向
+    response.writeHead(301,{'Location': 'https://github.com'});
+    response.end();
   }
   //console.log(pathname);
 }).listen(8888);

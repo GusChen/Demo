@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <script src="../build/vue.js"></script>
+  <script type="text/javascript">
+  //Instance Lifecycle
+  var vm = new Vue({
+    data: {
+      a: 1
+    },
+    created: function () {
+      // `this` 指向 vm 实例
+      console.log('a is: ' + this.a)
+    }
+  })
+  </script>
+</body>
+</html>

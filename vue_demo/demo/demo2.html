@@ -6,16 +6,20 @@
 </head>
 <body>
   <div id="app">
-    <p>{{ message }}</p>
+    <p>{{ message | capitalize }}</p>
+    <p>{{* message }} -这个数值将不在改变</p> <!--{{* }}形式只处理一次-->
     <input type="text" v-model='message'>
+    <br/>
+    <div>{{{ raw_html }}}</div> <!-- html需要 {{{ }}} 形式插入-->
   </div>
   <script src="../build/vue.js"></script>
   <script type="text/javascript">
-  //demo hello world
+  //demo
     var app = new Vue({
       el: '#app',
       data: {
-        message: "Hello World"
+        message: "hello world" ,
+        raw_html: "<i>html</i>"
       }
     });
   </script>

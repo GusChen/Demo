@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>仿阿里云效果</title>
+	<style>
+	body{
+		font-family:"微软雅黑";
+	}
+	#List {
+	    width: 1000px;
+	    height: auto;
+	    margin: 50px auto;
+	    list-style: none;
+	    overflow: hidden;
+	    padding: 0;
+	    border-left: 1px solid #e1e1e1;
+	}
+
+	#List .List-item {
+		float:left;
+	    height: 400px;
+	    width:220px;
+	    border-right: 1px solid #e1e1e1;
+	    position:relative;
+	    overflow:hidden;
+	}
+	#List .List-item.active {
+		width:335px!important;
+		background:#F3FCFF;
+	}
+	#List .List-item.active:before,#List .List-item.active:after{
+		position:absolute;
+		background:#0BC2FF;
+		width:1px;
+		height:400px;
+		content:"";
+		top:0;
+	}
+	#List .List-item.active:before{
+		left:0;
+	}
+	#List .List-item.active:after{
+		right:0;
+	}
+	#List .List-item.active .left{
+		left:-100%;
+	}
+	#List .List-item.active .right{
+		left:0;
+		z-index:1;
+	}
+	#List .List-item .left{
+		position:absolute;
+		width:100%;
+		height:400px;
+		left:0;
+		top:0;
+		z-index:1;
+		color:#000;
+	}
+	#List .List-item .right{
+		position:absolute;
+		width:100%;
+		height:400px;
+		left:100%;
+		top:0;
+		color:#1093BE;
+	}
+	#List .List-item .left,#List .List-item .right{
+		text-align:center;
+		font-size:72px;
+		line-height:400px;
+	}
+	#List .List-item, #List .List-item.active,#List .List-item.active:before,#List .List-item.active:after,#List .List-item.active .left,#List .List-item.active .right,#List .List-item .left,#List .List-item .right{
+	    -webkit-transition: all .3s;
+	    -o-transition: all .3s;
+	    transition: all .3s;
+	}
+	</style>
+</head>
+<body>
+	<ul id="List">
+		<li class="List-item active">
+			<div class="left">1</div>
+			<div class="right">1</div>
+		</li>
+		<li class="List-item">
+			<div class="left">2</div>
+			<div class="right">2</div>
+		</li>
+		<li class="List-item">
+			<div class="left">3</div>
+			<div class="right">3</div>
+		</li>
+		<li class="List-item">
+			<div class="left">4</div>
+			<div class="right">4</div>
+		</li>
+	</ul>
+	<script>
+	;(function(){
+		var _list = document.getElementById("List");
+		var _list_item = document.getElementsByClassName("List-item");
+		for (var i = 0; i < _list_item.length; i++){
+			//console.log(_list_item[i]);
+			_list_item[i].addEventListener("mouseenter", function(){
+				addClassActive(this);
+			}, false);
+			/*_list_item[i].addEventListener("mouseleave", function(){
+
+			}, true);*/
+		}
+		function addClassActive(_t) {
+			for (var i = 0; i < _list_item.length; i++){
+				removeClassName(_list_item[i], 'active');
+			}
+			addClassName(_t, 'active');
+		}
+		function removeClassName(obj, cls) {
+			if (hasClassName(obj, cls)) {
+				var reg = new RegExp('(\\s|^)' + cls + '(\\s|$)');
+				obj.className = obj.className.replace(reg, '');
+			}
+		}
+		function hasClassName(obj, cls) {
+			return obj.className.match(new RegExp('(\\s|^)' + cls + '(\\s|$)'));
+		}
+		function addClassName(obj, cls) {
+			if (!hasClassName(obj, cls)){
+				obj.className += ' ' + cls;
+			}
+		}
+	})();
+	</script>
+</body>
+</html>

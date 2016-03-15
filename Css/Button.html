@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Button</title>
+	<style>
+	/*button-div*/
+	.button-div{
+		margin-top:30px;
+	}
+	/*ios-button*/
+	.ios-button-input,.switch-button-input{
+		visibility:hidden;
+		position:absolute;
+		margin-left:-9999px;
+	}
+	.ios-button-label{
+		display:block;
+		position:relative;
+		outline:none;
+		padding:3px;
+		cursor:pointer;
+		width:150px;
+		height:75px;
+		border-radius:75px;
+		background:#dddddd;
+		user-select:none;
+		box-shadow:0 2px 5px rgba(0, 0, 0, 0.3);
+	}
+	.ios-button-label:after{
+		display:block;
+		position:absolute;
+		top:4px;
+		left:4px;
+		bottom:2px;
+		content:"";
+		width:74px;
+		height:74px;
+		border-radius:74px;
+		background:#ffffff;
+		box-shadow:0 2px 5px rgba(0, 0, 0, 0.3);
+		-webkit-transition: all .3s;
+		-o-transition: all .3s;
+		transition: all .3s;
+	}
+	.ios-button-label:before{
+		display:block;
+		position:absolute;
+		top:3px;
+		left:3px;
+		padding:1px;
+		width:150px;
+		height:75px;
+		border-radius:75px;
+		content:"";
+		-webkit-transition: all .3s;
+		-o-transition: all .3s;
+		transition: all .3s;
+	}
+	/*ios-button01*/
+	.ios-button-input01:checked + .ios-button-label01:after{
+		margin-left:75px;
+	}
+	.ios-button-label01:before{
+		background-color:#4949F2;
+		-webkit-transform: scale3d(.0, .0, 1);
+		-ms-transform: scale3d(.0, .0, 1);
+		-o-transform: scale3d(.0, .0, 1);
+		transform: scale3d(.0, .0, 1);
+	}
+	.ios-button-input01:checked + .ios-button-label01:before{
+		background-color:#4949F2;
+		-webkit-transform: scale3d(1, 1, 1);
+		-ms-transform: scale3d(1, 1, 1);
+		-o-transform: scale3d(1, 1, 1);
+		transform: scale3d(1, 1, 1);
+	}
+	/*ios-button02*/
+	.ios-button-label02{
+		background:#4949f2!important;
+	}
+	.ios-button-input02:checked + .ios-button-label02:after{
+		margin-left:75px;
+	}
+	.ios-button-label02:before{
+		top:0px!important;
+		left:0px!important;
+		padding:3px!important;
+		background-color:#dddddd;
+		-webkit-transform: scale3d(1, 1, 1);
+		-ms-transform: scale3d(1, 1, 1);
+		-o-transform: scale3d(1, 1, 1);
+		transform: scale3d(1, 1, 1);
+		-webkit-transition: all .5s;
+		-o-transition: all .5s;
+		transition: all .5s;
+	}
+	.ios-button-input02:checked + .ios-button-label02:before{
+		background-color:#dddddd;
+		-webkit-transform: scale3d(.0, .0, 1);
+		-ms-transform: scale3d(.0, .0, 1);
+		-o-transform: scale3d(.0, .0, 1);
+		transform: scale3d(.0, .0, 1);
+	}
+	/*ios-button03*/
+	.ios-button-input03:checked + .ios-button-label03:after{
+		margin-left:75px;
+	}
+	.ios-button-input03:checked + .ios-button-label03:before{
+		background-color:#4949F2;
+	}
+	/*ios-button04*/
+	.ios-button-label04:before{
+	    content: "OFF" !important;
+	    width: 75px!important;
+	    left: 75px!important;
+	    line-height: 75px;
+	    text-align: center;
+	    font-size: 28px;
+	    font-family: fantasy;
+	    color: #919090;
+	}
+	.ios-button-label04:after{
+	    line-height: 75px;
+	    text-align: center;
+	    font-size: 28px;
+	    font-family: fantasy;
+	    color: #4949F2;
+	    
+	}
+	.ios-button-input04:checked + .ios-button-label04:after{
+		margin-left:75px;
+		-webkit-animation: ios-button04 .6s linear .3s forwards;
+		-o-animation: ios-button04 .6s linear .3s forwards;
+		animation: ios-button04 .6s linear .3s forwards;
+	}
+	@keyframes ios-button04
+	{
+	0%   {margin-left:75px;width:75px;}
+	50%  {margin-left:0px;width:150px;}
+	100% {margin-left:0px;width:150px;content:"ON";}
+	}
+
+	@-moz-keyframes ios-button04 /* Firefox */
+	{
+	0%   {margin-left:75px;width:75px;}
+	50%  {margin-left:0px;width:150px;}
+	100% {margin-left:0px;width:150px;content:"ON";}
+	}
+
+	@-webkit-keyframes ios-button04 /* Safari 和 Chrome */
+	{
+	0%   {margin-left:75px;width:75px;}
+	50%  {margin-left:0px;width:150px;}
+	100% {margin-left:0px;width:150px;content:"ON";}
+	}
+
+	@-o-keyframes ios-button04 /* Opera */
+	{
+	0% {margin-left:0px;width:150px;content:"";}
+	50%  {margin-left:0px;width:150px;}
+	100%   {margin-left:0px;width:75px;}
+	}
+	/*switch-button*/
+	.switch-button-label{
+		display:block;
+		position:relative;
+		outline:none;
+		padding:3px;
+		cursor:pointer;
+		width:150px;
+		height:75px;
+		background:#dddddd;
+		user-select:none;
+		box-shadow:0 2px 5px rgba(0, 0, 0, 0.3);
+		overflow:hidden;
+	}
+	.switch-button-label span{
+		display:block;
+		position:relative;
+		top:-3px;
+		left:-3px;
+		padding:3px 0 3px 3px;
+		content:"";
+		width:75px;
+		height:75px;
+		background:#ffffff;
+		-webkit-transition: all .3s;
+		-o-transition: all .3s;
+		transition: all .3s;
+	}
+	.switch-button-input:checked + .switch-button-label span{
+		margin-left:79px;
+	}
+	.switch-button-label span:after{
+	    display: block;
+	    position: absolute;
+	    top: 0px;
+	    left: 75px;
+	    padding: 3px 0 3px 3px;
+	    content: "OFF";
+	    width: 75px;
+	    height: 75px;
+	    line-height: 75px;
+	    text-align: center;
+	    font-size: 30px;
+	    font-family: fantasy;
+	    color: #919090;
+	    /* background: rgba(0, 0, 0, 0.3); */
+	    -webkit-transition: all .3s;
+	    -o-transition: all .3s;
+	    transition: all .3s;
+	}
+	.switch-button-label span:before{
+	    display: block;
+	    position: absolute;
+	    top: 0px;
+	    left: -79px;
+	    padding: 3px 0 3px 3px;
+	    content: "ON";
+	    width: 75px;
+	    height: 75px;
+	    line-height: 75px;
+	    text-align: center;
+	    font-size: 30px;
+	    font-family: fantasy;
+	    color: #FFFFFF;
+	    background: #4949f2;
+	    -webkit-transition: all .3s;
+	    -o-transition: all .3s;
+	    transition: all .3s;
+	}
+	</style>
+</head>
+<body>
+	<div class="ios-button">
+		<input type="checkbox" class="ios-button-input ios-button-input01" id="ios01">
+		<label for="ios01" class="ios-button-label ios-button-label01"></label>
+	</div>
+	<div class="ios-button button-div">
+		<input type="checkbox" class="ios-button-input ios-button-input02" id="ios02">
+		<label for="ios02" class="ios-button-label ios-button-label02"></label>
+	</div>
+	<div class="ios-button button-div">
+		<input type="checkbox" class="ios-button-input ios-button-input03" id="ios03">
+		<label for="ios03" class="ios-button-label ios-button-label03"></label>
+	</div>
+	<div class="ios-button button-div">
+		<input type="checkbox" class="ios-button-input ios-button-input04" id="ios04">
+		<label for="ios04" class="ios-button-label ios-button-label04"></label>
+	</div>
+	<div class="switch-button button-div">
+		<input type="checkbox" class="switch-button-input switch-button-input01" id="switch01">
+		<label for="switch01" class="switch-button-label switch-button-label01">
+			<span></span>
+		</label>
+	</div>
+</body>
+</html>

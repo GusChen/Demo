@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	.demo{
+		width:100px;
+		height:100px;
+		position:relative;
+		background:#000;
+		margin:100px auto;
+		overflow:hidden;
+	}
+	.block{
+		width:100px;
+		height:100px;
+		position:absolute;
+		background:red;
+	}
+	</style>
+	<script src='http://cdn.bootcss.com/jquery/2.1.2/jquery.min.js'></script>
+</head>
+<body>
+	<div class="demo">
+		<div class="block"></div>
+	</div>
+	<script>
+	$('.demo').on('mouseenter mouseleave',function (e){
+		var w = $(this).width();
+		var h = $(this).height();
+		var x = (e.pageX - $(this).offset().left - (w / 2)) * (w > h ? (h / w) : 1);
+		var y = (e.pageY - $(this).offset().top - (h / 2)) * (h > w ? (w / h) : 1);
+		var direction = Math.round((((Math.atan2(y, x) * (180 / Math.PI)) + 180) / 90) + 3) % 4; 
+		// 0 1 2 3 => t r b l
+		var eventType = e.type;
+		var aPos=[{left:0,top:-100},{left:100,top:0},{left:0,top:100},{left:-100,top:0}];  
+		if (e.type == 'mouseenter') {
+			$(".block").css(aPos[direction]).stop(true).animate({left:0,top:0},1000);  
+		} else {
+			 $(".block").stop(true).animate(aPos[direction],1000);  
+		}
+	});
+	</script>
+</body>
+</html>

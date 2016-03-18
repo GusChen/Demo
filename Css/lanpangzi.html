@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>蓝胖子</title>
+</head>
+<style>
+.langpangzi{
+	margin:40px auto;
+}
+/*头*/
+.header{
+	margin:0px auto;
+	width:300px;
+	height:300px;
+	background:linear-gradient(45deg,#095469,#095469,#0EAFD9,#0EAFD9,#0EAFD9,#0EB7E2,#0BBCE8, #82DEF7,#82DEF7);
+	border-radius:48%;
+	border:2px solid #000;
+	position:relative;
+	box-sizing: content-box;
+}
+.header:after{
+	position:absolute;
+	bottom:5px;
+	left:0;
+	width:250px;
+	height:200px;
+	margin-left:24px;
+	border-radius:48%;
+	background:#fff;
+	content:"";
+	border:2px solid #000;
+	box-sizing: content-box;
+}
+/*眼睛*/
+.header .eye-left{
+    width: 60px;
+    height: 75px;
+    border: 2px solid #000;
+    background: #fff;
+    position: absolute;
+    border-radius: 44%;
+    top: 61px;
+    left: 50%;
+    margin-left: -61px;
+    box-sizing: content-box;
+    z-index: 10;
+}
+.header .eye-right{
+    width: 60px;
+    height: 75px;
+    border: 2px solid #000;
+    background: #fff;
+    position: absolute;
+    border-radius: 44%;
+    top: 61px;
+    left: 50%;
+/*    margin-left: -60px;*/
+    box-sizing: content-box;
+    z-index: 10;
+}
+.header .eye-left:after{
+    content: '';
+    width: 15px;
+    height: 15px;
+    background: #000;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 22px;
+    right: 10px;
+}
+.header .eye-left:before{
+    content: '';
+    width: 25px;
+    height: 25px;
+    border: 2px solid #000;
+    background: radial-gradient(at 60% 30%,#ffffff, #d90e0e, #6D1404);
+    border-radius: 50%;
+    position: absolute;
+    bottom: -18px;
+    right: -15px;
+}
+.header .eye-right:after{
+    content: '';
+    width: 15px;
+    height: 15px;
+    background: #000;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 22px;
+    left: 10px;
+}
+/*胡子*/
+.header .beard-left{
+    width: 50px;
+    height: 2px;
+    background: #000;
+    position: absolute;
+    bottom: 128px;
+    left: 56px;
+    z-index: 11;
+}
+.header .beard-left:before{
+    width: 50px;
+    height: 2px;
+    background: #000;
+    position: absolute;
+    bottom: 10px;
+    left: 0px;
+    z-index: 11;
+    -webkit-transform-origin: right;
+    -moz-transform-origin: right;
+    -ms-transform-origin: right;
+    -o-transform-origin: right;
+    transform-origin: right;
+    -webkit-transform: rotate(30deg);
+    -ms-transform: rotate(30deg);
+    -o-transform: rotate(30deg);
+    transform: rotate(30deg);
+    content:'';
+}
+.header .beard-left:after{
+    width: 50px;
+    height: 2px;
+    background: #000;
+    position: absolute;
+    top: 10px;
+    left: 0px;
+    z-index: 11;
+    -webkit-transform-origin: right;
+    -moz-transform-origin: right;
+    -ms-transform-origin: right;
+    -o-transform-origin: right;
+    transform-origin: right;
+    -webkit-transform: rotate(-30deg);
+    -ms-transform: rotate(-30deg);
+    -o-transform: rotate(-30deg);
+    transform: rotate(-30deg);
+    content:'';
+}
+.header .beard-right{
+    width: 50px;
+    height: 2px;
+    background: #000;
+    position: absolute;
+    bottom: 128px;
+    right: 56px;
+    z-index: 11;
+}
+.header .beard-right:before{
+    width: 50px;
+    height: 2px;
+    background: #000;
+    position: absolute;
+    bottom: -10px;
+    left: 0px;
+    z-index: 11;
+    -webkit-transform-origin: left;
+    -moz-transform-origin: left;
+    -ms-transform-origin: left;
+    -o-transform-origin: left;
+    transform-origin: left;
+    -webkit-transform: rotate(30deg);
+    -ms-transform: rotate(30deg);
+    -o-transform: rotate(30deg);
+    transform: rotate(30deg);
+    content:'';
+}
+.header .beard-right:after{
+    width: 50px;
+    height: 2px;
+    background: #000;
+    position: absolute;
+    top: -10px;
+    left: 0px;
+    z-index: 11;
+    -webkit-transform-origin: left;
+    -moz-transform-origin: left;
+    -ms-transform-origin: left;
+    -o-transform-origin: left;
+    transform-origin: left;
+    -webkit-transform: rotate(-30deg);
+    -ms-transform: rotate(-30deg);
+    -o-transform: rotate(-30deg);
+    transform: rotate(-30deg);
+    content:'';
+}
+/*嘴巴*/
+.header .mouth{
+	height: 100px;
+    width: 2px;
+    background: #000;
+    position: absolute;
+    bottom: 45px;
+    left: 50%;
+    margin-left: -1px;
+    z-index: 11;
+}
+.header .mouth:after{
+    height: 100px;
+    width: 150px;
+    border-bottom: 2px solid #000000;
+    position: absolute;
+    bottom: -1px;
+    left: 50%;
+    margin-left: -75px;
+    z-index: 11;
+    content: "";
+    border-radius: 50%;
+}
+
+/*铃铛*/
+.collar{
+    position: relative;
+    z-index: 20;
+    width: 228px;
+    height: 25px;
+        background: linear-gradient(90deg,#A72409,#d90e0e,#d90e0e,#d90e0e);
+    margin: -39px auto 0 auto;
+    box-sizing: border-box;
+    border: 2px solid #000;
+    border-radius: 10px;
+}
+.collar .bell{
+	background:radial-gradient(at 60% 30%,#ffffff, #CBC10A, #CBC10A);
+	width:40px;
+	height:40px;
+	position:absolute;
+	border:2px solid #000;
+	border-radius:50%;
+	top:10px;
+	left:50%;
+	margin-left:-20px;
+}
+.collar .bell:after{
+    width: 36px;
+    height: 2px;
+    position: absolute;
+    background: #000;
+    top: 10px;
+    left: 50%;
+    margin-left: -18px;
+    content: '';
+}
+.collar .bell:before{
+    width: 41px;
+    height: 2px;
+    position: absolute;
+    background: #000;
+    top: 15px;
+    left: 50%;
+    margin-left: -20px;
+    content: '';
+}
+.collar .bell .bells{
+    width: 16px;
+    height: 10px;
+    border-radius:50%;
+    position: absolute;
+    background: #000;
+    top: 22px;
+    left: 50%;
+    margin-left: -8px;
+}
+.collar .bell .bells:after{
+    width: 4px;
+    height: 10px;
+    position: absolute;
+    background: #000;
+    top: 10px;
+    left: 50%;
+    margin-left: -2px;
+    content: '';
+}
+
+
+/*身体部分*/
+.body{
+	width: 220px;
+	height: 200px;
+	position:relative;
+	margin:0 auto;
+}
+/*肚子*/
+.body .belly{
+	width:180px;
+	height:160px;
+	background:#fff;
+	position:absolute;
+	top:-20px;
+	z-index:15;
+	left:50%;
+	margin-left:-90px;
+	border-radius:50%;
+	border:2px solid #000;
+}
+.body .belly:before{
+	width: 130px;
+    height: 130px;
+    border: 2px solid #000;
+    -webkit-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    border-top-color: transparent;
+    border-right-color: transparent;
+    border-radius: 50%;
+    content: "";
+    position: absolute;
+    top: 11px;
+    z-index: 15;
+    left: 50%;
+    margin-left: -65px;
+}
+.body .belly:after{
+    width: 133px;
+    height: 2px;
+    content: "";
+    background: #000;
+    position: absolute;
+    top: 78px;
+    z-index: 15;
+    left: 50%;
+    margin-left: -65px;
+}
+.body .waist{
+    width: 220px;
+    height: 125px;
+    /* background: #0DBAE5; */
+    background: linear-gradient(45deg,#0C90B3,#0C90B3,#0C90B3,#0EAFD9,#0EB7E2,#0BBCE8);
+    top: 43px;
+    left: 0;
+    position: absolute;
+    border: 2px solid #000;
+    border-top-color: transparent;
+    border-bottom-color: transparent;
+}
+.body .waist:before{
+     width: 216px;
+    height: 47px;
+    /* background: #0DBAE5; */
+    background: linear-gradient(90deg,#0C90B3,#0C90B3,#0EAFD9,#0DBAE5,#0DBAE5);
+    top: -47px;
+    left: 0;
+    position: absolute;
+    content: '';
+}
+.body .waist:after{
+    width: 30px;
+    height: 30px;
+    border: 2px solid #000;
+    background: #fff;
+    border-top-color: transparent;
+    border-right-color: transparent;
+    border-radius: 50%;
+    content: "";
+    top: 110px;
+    left: 50%;
+    margin-left: -15px;
+    position: absolute;
+    -webkit-transform: rotate(135deg);
+    -ms-transform: rotate(135deg);
+    -o-transform: rotate(135deg);
+    transform: rotate(135deg);
+}
+.body .footer-left{
+    width: 112px;
+    height: 30px;
+    border: 2px solid #000;
+    position: absolute;
+    border-radius: 20px;
+    top: 167px;
+    left: -8px;
+    background: #fff;
+}
+.body .footer-right{
+    width: 112px;
+    height: 30px;
+    border: 2px solid #000;
+    position: absolute;
+    border-radius: 20px;
+    top: 167px;
+    right: -15px;
+    background: #fff;
+}
+.body .arm-left{
+    width: 87px;
+    height: 46px;
+    border: 2px solid #000;
+    position: absolute;
+    top: -12px;
+    left: -67px;
+    background: #0C90B3;
+    transform-origin: right;
+    transform: rotate(-39deg);
+    border-left: transparent;
+    border-right: transparent;
+}
+.body .arm-left:after{
+    width: 60px;
+    height: 60px;
+    border: 2px solid #000;
+    border-radius: 50%;
+    position: absolute;
+    top: -11px;
+    left: -45px;
+    background: #fff;
+    content: '';
+}
+.body .arm-right{
+    width: 87px;
+    height: 46px;
+    border: 2px solid #000;
+    position: absolute;
+    top: -12px;
+    right: -67px;
+    background: #0DBAE5;
+    transform-origin: left;
+    transform: rotate(39deg);
+    border-left: transparent;
+    border-right: transparent;
+}
+.body .arm-right:after{
+    width: 60px;
+    height: 60px;
+    border: 2px solid #000;
+    border-radius: 50%;
+    position: absolute;
+    top: -11px;
+    right: -45px;
+    background: #fff;
+    content: '';
+}
+</style>
+<body>
+	<div class="langpangzi">
+		<!-- 头部 -->
+		<div class="header">
+			<!-- 眼睛 -->
+			<div class="eye-left"></div>
+			<div class="eye-right"></div>
+			<!-- 胡须 -->
+			<div class="beard-left"></div>
+			<div class="beard-right"></div>
+			<!-- 嘴巴 -->
+			<div class="mouth"></div>
+		</div>
+		<!-- 领带 -->
+		<div class="collar">
+			<div class="bell">
+				<div class="bells"></div>
+			</div>
+		</div>
+		<!-- 身体 -->
+		<div class="body">
+			<div class="belly"></div>
+			<div class="arm-left"></div>
+			<div class="arm-right"></div>
+			<div class="waist"></div>
+			<div class="footer-left"></div>
+			<div class="footer-right"></div>
+		</div>
+	</div>
+</body>
+</html>

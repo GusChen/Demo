@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>bilibili</title>
+</head>
+<style>
+.bilibili{
+	margin:100px auto;
+	width:160px;
+	height:120px;
+	background:#ddd;
+	border:20px solid #ddd;
+	border-radius:25px;
+	position:relative;
+}
+.bilibili:before{
+	position:absolute;
+	bottom:-34px;
+	left:20px;
+	width:30px;
+	height:30px;
+	background:#ddd;
+	border-radius:50%;
+	content:'';
+	box-shadow:87px 0px 0px #ddd;
+}
+.bilibili:after{
+	position:absolute;
+	top:0;
+	left:0;
+	width:160px;
+	height:120px;
+	background:#fff;
+	border-radius:25px;
+	content:'';
+}
+.antenna:before{
+    position: absolute;
+    top: -39px;
+    left: -1px;
+    width: 50px;
+    height: 0;
+    content:'';
+    border-radius: 5px;
+    border: 5px solid #ddd;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+.antenna:after{
+    position: absolute;
+    top: -39px;
+    right: -1px;
+    width: 50px;
+    height: 0;
+    content:'';
+    border-radius: 5px;
+    border: 5px solid #ddd;
+    -webkit-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}
+.eye:before{
+	position: absolute;
+    top: 35px;
+    right: 100px;
+    width: 40px;
+    height: 17px;
+    content: '';
+    background: #ddd;
+    z-index: 10;
+    -webkit-transform: rotate(-25deg);
+    -ms-transform: rotate(-25deg);
+    -o-transform: rotate(-25deg);
+    transform: rotate(-25deg);
+}
+.eye:after{
+	position: absolute;
+    top: 35px;
+    left: 100px;
+    width: 40px;
+    height: 17px;
+    content: '';
+    background: #ddd;
+    z-index: 10;
+    -webkit-transform: rotate(25deg);
+    -ms-transform: rotate(25deg);
+    -o-transform: rotate(25deg);
+    transform: rotate(25deg);
+}
+.mouth:before{
+	position: absolute;
+    top: 60px;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    content: '';
+    background: #fff;
+    border:5px solid #ddd;
+    border-radius:50%;
+    margin-left:-27.5px;
+    border-left-color:transparent;
+    border-top-color:transparent;
+    z-index: 10;
+    -webkit-transform: rotate(25deg);
+    -ms-transform: rotate(25deg);
+    -o-transform: rotate(25deg);
+    transform: rotate(25deg);
+}
+.mouth:after{
+	position: absolute;
+    top: 60px;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    content: '';
+    background: #fff;
+    border:5px solid #ddd;
+    border-radius:50%;
+    margin-left:-2.5px;
+    border-left-color:transparent;
+    border-top-color:transparent;
+    z-index: 10;
+    -webkit-transform: rotate(65deg);
+    -ms-transform: rotate(65deg);
+    -o-transform: rotate(65deg);
+    transform: rotate(65deg);
+}
+</style>
+<body>
+	<div class="bilibili">
+		<div class="antenna"></div>
+		<div class="eye"></div>
+		<div class="mouth"></div>
+	</div>
+</body>
+</html>

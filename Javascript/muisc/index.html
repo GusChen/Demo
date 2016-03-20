@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Muisc</title>
+<style>
+.muisc{
+	width:700px;
+	height:100px;
+	margin:0 auto;
+	list-style: none;
+	background:#ddd;
+	padding:0;
+}
+.muisc li{
+    float: left;
+    width: 100px;
+    height: 100px;
+    position:relative;
+    overflow:hidden;
+}
+.muisc li[class^="color"]:after{
+	position:absolute;
+	top:95px;
+	left:0;
+	content:'';
+	width:inherit;
+	height:inherit;
+	transition: top .3s;
+}
+.muisc li:before{
+	content:attr(data-value);
+	position:absolute;
+	top:0;
+	left:0;
+	width:inherit;
+	height:inherit;
+    line-height: 100px;
+    text-align: center;
+    font-size: 25px;
+    font-family: cursive;
+    z-index:10;
+}
+.muisc li.on:after{
+	top:0px;
+}
+.color01:after{
+	background:#F44336;
+}
+.color02:after{
+	background:#9C27B0;
+}
+.color03:after{
+	background:#4CAF50;
+}
+.color04:after{
+	background:#FFEB3B;
+}
+.color05:after{
+	background:#FF9800;
+}
+.color06:after{
+	background:#FF5722;
+}
+.color07:after{
+	background:#E91E63;
+}
+.muisc-audio{
+	display:none;
+}
+.test{
+    width: 700px;
+    margin: 20px auto;
+    font-size: 24px;
+    font-family: 微软雅黑;
+}
+</style>
+</head>
+<body>
+	<ul class="muisc">
+		<li class="color01" data-value="1"></li>
+		<li class="color02" data-value="2"></li>
+		<li class="color03" data-value="3"></li>
+		<li class="color04" data-value="4"></li>
+		<li class="color05" data-value="5"></li>
+		<li class="color06" data-value="6"></li>
+		<li class="color07" data-value="7"></li>
+	</ul>
+	<div class="test">键盘对应1-7 A-J</div>
+	<div class="muisc-audio"></div>
+<script>
+;(function(){
+	// Piano 对象
+	var Piano = function(list, $audio){
+		var _this = this;
+		var _Piano_list = document.getElementsByClassName(list)[0].getElementsByTagName('li');
+		//init
+		function init(){
+			addPianoEvent();
+			addKeycodeListener();
+		}
+
+		// addPinoEvent
+		function addPianoEvent(){
+			for( var i = 0; i < _Piano_list.length; i++ ) {
+				(function(n){
+					_Piano_list[n].addEventListener("mouseover", function(){
+						playPiano(n)
+						console.log(n);
+					},false);
+				})(i);
+			}
+		}
+
+		// keycodeEvent
+		function addKeycodeListener(){
+			document.addEventListener('keydown', function(e){
+				console.log(e.keyCode);
+				switch(e.keyCode){
+					case 97: playPiano(0); break;
+					case 98: playPiano(1); break;
+					case 99: playPiano(2); break;
+					case 100: playPiano(3); break;
+					case 101: playPiano(4); break;
+					case 102: playPiano(5); break;
+					case 103: playPiano(6); break;
+					case 49 : playPiano(0); break;
+					case 50 : playPiano(1); break;
+					case 51 : playPiano(2); break;
+					case 52 : playPiano(3); break;
+					case 53 : playPiano(4); break;
+					case 54 : playPiano(5); break;
+					case 55 : playPiano(6); break;
+					case 65 : playPiano(0); break;
+					case 83 : playPiano(1); break;
+					case 68 : playPiano(2); break;
+					case 70 : playPiano(3); break;
+					case 71 : playPiano(4); break;
+					case 72 : playPiano(5); break;
+					case 74 : playPiano(6); break;
+					default: break;
+				}
+			},false);
+		}
+
+		// playPiano
+		function playPiano(num) {
+			_this.liHover(num);
+			$audio.playaudio(num);
+		}
+
+		// 连弹
+		_this.lyb = function(){
+			var times = 0;
+			for (var i = 0; i < 7; i++) {
+				(function(n,times){
+					setTimeout(function(){
+						playPiano(n);
+					}, times);
+				})(i,times);
+				times += 300;
+			}
+		}
+
+		// 动效
+		_this.liHover = function(num) {
+			addClass(_Piano_list[num], 'on');
+			setTimeout(function(){
+				removeClass(_Piano_list[num], 'on');
+			}, 300);
+		}
+
+		init();
+	}
+
+	// audio 对象
+	var $audio = function (music_list){
+		var _this = this;
+		var _muisc = document.getElementsByClassName(music_list)[0];
+		var _muisc_type = getMuiscType();
+		// init
+		function init(){
+			addAudio();
+		}
+		// 添加音乐
+		function addAudio(){
+			var _muisc_piano = '';
+			for (var i = 0; i < 7; i++ ) {
+				_muisc_piano += '<audio class="muisc_audio" preload="auto"><source class="audio_source" src="muisc/' + (i + 1) + '.' + _muisc_type + '" type=audio/' + _muisc_type + '	></audio>';
+			}
+			_muisc.innerHTML = _muisc_piano;
+			setTimeout(getAudio);
+		}
+
+		//获取audio列表
+		function getAudio(){	
+			_this._muisc_list = _muisc.getElementsByTagName('audio');
+		}
+
+		// 类型处理
+		function getMuiscType(){
+			return 'mp3';
+		}
+
+		_this.playaudio = function (num) {
+			_this._muisc_list[num].currentTime = 0;
+			_this._muisc_list[num].play();
+		}
+		init();
+	}
+
+	// class 处理函数
+	function hasClass(obj, cls) {  
+      return Boolean(obj.className.match(new RegExp('(\\s|^)' + cls + '(\\s|$)')));  
+    }  
+    /********
+     *添加class
+     */
+    function addClass(obj, cls) {  
+        if (!hasClass(obj, cls)) obj.className += " " + cls;  
+    }  
+    /********
+     *删除class
+     */
+    function removeClass(obj, cls) {  
+        if (hasClass(obj, cls)) {  
+            var reg = new RegExp('(\\s|^)' + cls + '(\\s|$)');  
+            obj.className = obj.className.replace(reg, ' ');  
+        }  
+    } 
+	//实例化
+	myaudio = new $audio('muisc-audio');
+	mypiano = new Piano('muisc',myaudio);
+	window.onload = function (){
+		mypiano.lyb();
+	}
+})();
+</script>
+</body>
+</html>

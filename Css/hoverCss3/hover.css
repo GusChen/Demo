@@ -1,0 +1,291 @@
+/* 主体 */
+.hover{
+    position: relative;
+}
+
+/* 圆形*/
+.hover a .circle-item,.hover a .circle-item-back{
+    width: 100%;
+    height: 100%;
+    border-radius:50%;
+}
+
+.hover a .circle-item:before,.hover a:hover .circle-item:before{
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top:0;
+    left: 0;
+    border-radius: 50%;
+    box-shadow: inset 0 0 0 20px rgba(255, 255, 255, 0.6), 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.circle-item img{
+    width: 100%;
+    border-radius:50%;
+}
+
+/* rotateImg */
+.hover a .rotateImg{
+    transition: all 0.3s ease-in-out;
+}
+
+.hover a:hover .rotateImg{
+    transform:rotate(360deg);
+}
+
+/* rotateBorder */
+
+.hover .rotateBorder:after {
+    position: absolute;
+    content:'';
+    width: 100%;
+    height: 100%;
+    top:-10px;
+    left:-10px;
+    border-radius: 50%;
+    /*box-sizing: border-box;*/
+    border: 10px solid;
+    border-left-color: #2196F3;
+    border-right-color: #F44336;
+    border-top-color: #2196F3;
+    border-bottom-color: #F44336;
+    transition:all 0.6s ease-in-out 0s;
+}
+.hover a:hover .rotateBorder:after {
+    transform: rotate(180deg);
+}
+
+.hover a .rotateBorder-back{
+    pointer-events: none;
+    position: absolute;
+    top:0;
+    left:0;
+    background: rgba(0,0,0,0.7);
+    text-align: center;
+    line-height: 300px;
+    font-size: 40px;
+    color:#fff;
+    opacity: 0;
+    transition:all 0.6s ease-in-out 0s;
+}
+.hover a:hover .rotateBorder-back{
+    opacity: 1;
+}
+
+/* rotateOut */
+.hover a .rotateOut{
+    transition: all 0.6s ease-in-out;
+    transform: translateX(0) rotate(0deg);
+    position: relative;
+}
+
+.hover a:hover .rotateOut{
+    transform: translateX(150%) rotate(180deg);
+    pointer-events: none;
+    opacity: 0;
+}
+.hover a .rotateOut-back{
+    pointer-events: none;
+    position: absolute;
+    z-index: -1;
+    top:0;
+    left:0;
+    background: rgba(0,0,0,0.7);
+    text-align: center;
+    line-height: 300px;
+    font-size: 40px;
+    color:#fff;
+    transition:all 0.6s ease-in-out 0s;
+}
+/* rotataIn */
+.hover a .rotateIn-back{
+    pointer-events: none;
+    position: absolute;
+    top:0;
+    left:0;
+    opacity: 0;
+    background: rgba(0,0,0,0.7);
+    text-align: center;
+    line-height: 300px;
+    font-size: 40px;
+    color:#fff;
+    transform: translateX(-180%) rotate(-180deg);
+    transition:all 0.6s ease-in-out 0s;
+}
+
+.hover a:hover .rotateIn-back{
+    transform: translateX(0%) rotate(0deg);
+    opacity: 1;
+}
+/* translateIn */
+.hover a .translateIn{
+    transition: all 0.6s ease-in-out;
+    transform: translateX(0);
+    position: relative;
+}
+
+.hover a:hover .translateIn{
+    transform: translateX(150%);
+    pointer-events: none;
+    opacity: 0;
+}
+.hover a .translateIn-back{
+    pointer-events: none;
+    position: absolute;
+    z-index: -1;
+    top:0;
+    left:0;
+    background: rgba(0,0,0,0.7);
+    text-align: center;
+    line-height: 300px;
+    font-size: 40px;
+    color:#fff;
+    transition:all 0.6s ease-in-out 0s;
+}
+/* translateOut */
+.hover a .translateOut-back{
+    pointer-events: none;
+    position: absolute;
+    top:0;
+    left:0;
+    opacity: 0;
+    background: rgba(0,0,0,0.7);
+    text-align: center;
+    line-height: 300px;
+    font-size: 40px;
+    color:#fff;
+    transform: translateX(-180%) ;
+    transition:all 0.6s ease-in-out 0s;
+}
+
+.hover a:hover .translateOut-back{
+    transform: translateX(0%) ;
+    opacity: 1;
+}
+/* fadeIn */
+.hover a .fadeIn{
+    position: relative;
+}
+
+.hover a .fadeIn-back{
+    pointer-events: none;
+    position: absolute;
+    top:0;
+    left:0;
+    z-index: 1;
+    background: rgba(0,0,0,0.7);
+    text-align: center;
+    line-height: 300px;
+    font-size: 40px;
+    color:#fff;
+    transform:scale(0);
+    opacity: 0;
+    transition:all 0.3s ease-in-out 0s;
+}
+.hover a:hover .fadeIn-back{
+    transform:scale(1);
+    opacity: 1;
+}
+
+/* fadeInOut */
+.hover a .fadeOut{
+    position: relative;
+    transition: all 0.3s ease-in-out;
+}
+
+.hover a:hover .fadeOut{
+    transform:scale(0);
+    opacity: 0;
+}
+
+.hover a .fadeOut-back{
+    pointer-events: none;
+    position: absolute;
+    top:0;
+    left:0;
+    background: rgba(0,0,0,0.7);
+    text-align: center;
+    line-height: 300px;
+    font-size: 40px;
+    color:#fff;
+    z-index: -1;
+}
+/* fadeInOut */
+.hover a .fadeInOut{
+    position: relative;
+    transition: all 0.3s ease-in-out;
+}
+
+.hover a:hover .fadeInOut{
+    transform:scale(0.3);
+    opacity: 0;
+}
+
+.hover a .fadeInOut-back{
+    pointer-events: none;
+    position: absolute;
+    top:0;
+    left:0;
+    background: rgba(0,0,0,0.7);
+    text-align: center;
+    line-height: 300px;
+    font-size: 40px;
+    color:#fff;
+    transform:scale(0.3);
+    opacity: 0;
+    transition:all 0.3s ease-in-out 0s;
+}
+.hover a:hover .fadeInOut-back{
+    transform:scale(1);
+    opacity: 1;
+}
+/* fadeRotateIn */
+.hover a .fadeRotateIn{
+    position: relative;
+    transition: all 0.3s ease-in-out;
+}
+
+.hover a .fadeRotateIn-back{
+    pointer-events: none;
+    position: absolute;
+    top:0;
+    left:0;
+    background: rgba(0,0,0,0.7);
+    text-align: center;
+    line-height: 300px;
+    font-size: 40px;
+    color:#fff;
+    opacity: 0;
+    transition:all 0.3s ease-in-out 0s;
+}
+.hover a:hover .fadeRotateIn-back{
+    transform:rotate(360deg);
+    opacity: 1;
+}
+
+/* fadeRotateOut */
+.hover a .fadeRotateOut{
+    position: relative;
+    transition: all 0.3s ease-in-out;
+}
+
+.hover a:hover .fadeRotateOut{
+    transform:rotate(360deg);
+    opacity: 0;
+}
+
+.hover a .fadeRotateOut-back{
+    pointer-events: none;
+    position: absolute;
+    top:0;
+    left:0;
+    background: rgba(0,0,0,0.7);
+    text-align: center;
+    line-height: 300px;
+    font-size: 40px;
+    color:#fff;
+    z-index: -1;
+    transition:all 0.3s ease-in-out 0s;
+}
